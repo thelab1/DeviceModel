@@ -9,6 +9,10 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="DeviceBase" default="default" basedir=".">
     <description>Builds, tests, and runs the project DeviceBase.</description>
+    <target name="-post-jar">
+        <echo level="info">Doing Post Jar...</echo>
+        <exec executable="doPostJar.sh" resolveexecutable="true"></exec>
+    </target>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

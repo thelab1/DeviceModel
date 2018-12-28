@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RLUTILS="/opt/rlutils"
-PROJECT="RestProxyService"
+PROJECT="MessagingService"
 
 mkdir -p ${RLUTILS}/{bin,config,docs,jars,logs}
 if [ ! -f "dist/${PROJECT}.jar" ]; then

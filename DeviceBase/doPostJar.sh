@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RLUTILS="/opt/rlutils"
-PROJECT="RestProxyService"
+PROJECT="DeviceBase"
 
 mkdir -p ${RLUTILS}/{bin,config,docs,jars,logs}
 if [ ! -f "dist/${PROJECT}.jar" ]; then
@@ -9,6 +9,4 @@ if [ ! -f "dist/${PROJECT}.jar" ]; then
     exit 1
 fi
 
-${RLUTILS}/bin/JarFixer
 cp -a dist/${PROJECT}.jar ${RLUTILS}/jars/
-cp -a dist/${PROJECT} ${RLUTILS}/bin/

@@ -35,6 +35,7 @@ public class RestProxyService {
 
         // Listen for all get requests.
         get("/rest/*", (request, response) -> {
+            byte[] body = request.bodyAsBytes();
             return null;
         });
 
