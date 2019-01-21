@@ -163,14 +163,26 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
 
         return -1;
     }
-
     public void addChild(DeviceNode child) {
-        // Update the child to hold this node as it's parent.
-        child.setParent(this);
+        this.addChild(child, false);
+    }
 
-        // Add the child to the list of children.
-        synchronized (children) {
-            this.children.add(child);
+    public void addChild(DeviceNode child, boolean fireUpdate) {
+        if (fireUpdate) {
+            // Copy this node, add the child
+            // and then update this node.
+            DeviceNode wrapper = this.cloneShallow();
+            child.setParent(wrapper);
+            this.update(wrapper);
+        }
+        else {
+            // Update the child to hold this node as it's parent.
+            child.setParent(this);
+
+            // Add the child to the list of children.
+            synchronized (children) {
+                this.children.add(child);
+            }
         }
     }
 

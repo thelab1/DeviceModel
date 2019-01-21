@@ -9,6 +9,7 @@ import messagingservice.zmq.ZmqProxy;
 public class MessagingService {
 
     public static void main(String[] args) {
+        System.out.println("Starting Messaging Service.");
         new ZmqProxy();
     }
 }
