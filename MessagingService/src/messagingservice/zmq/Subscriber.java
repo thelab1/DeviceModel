@@ -17,6 +17,7 @@ public abstract class Subscriber extends Thread {
     public Subscriber() {
         this.context = ZMQ.context(1);
         this.socket = this.context.socket(ZMQ.SUB);
+//        this.socket.setRate(1000000);
         this.socket.bind("tcp://localhost:8888");
 
         // Autosubscribe to subscribe and unsubscribe.
@@ -44,23 +45,37 @@ public abstract class Subscriber extends Thread {
         running = true;
         String topic, body;
         while (running && !this.isInterrupted()) {
-            if ((topic = socket.recvStr()) != null && (body = socket.recvStr()) != null) {
-                switch(topic.toLowerCase()) {
-                    case "subscribe": {
-                        subscribe(body);
-                        break;
-                    }
-                    case "unsubscribe": {
-                        unsubscribe(body);
-                        break;
-                    }
-                    default: {
-                        // Handle the message.
-                        handleMessage(new Message(topic, body.getBytes(Charset.defaultCharset())));
+            try {
+                if ((topic = socket.recvStr()) != null && (body = socket.recvStr()) != null) {
+                    switch(topic.toLowerCase()) {
+                        case "subscribe": {
+                            subscribe(body);
+                            break;
+                        }
+                        case "unsubscribe": {
+                            unsubscribe(body);
+                            break;
+                        }
+                        default: {
+                            // Handle the message.
+                            handleMessage(new Message(topic, body.getBytes(Charset.defaultCharset())));
+                        }
                     }
                 }
+                else {
+                    running = false;
+                    break;
+                }
+                Thread.currentThread().sleep(10);
+            }
+            catch (InterruptedException ex) {
+                running = false;
             }
         }
+
+        // Shutdown
+        this.socket.close();
+        this.context.close();
     }
 
     public abstract void handleMessage(Message message);

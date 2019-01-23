@@ -13,8 +13,10 @@ public class ZmqProxy extends Thread {
     public ZmqProxy() {
         this.context = ZMQ.context(1);
         this.zPublisher = this.context.socket(ZMQ.XPUB);
+//        this.zPublisher.setRate(1000000);
         this.zPublisher.bind("tcp://*:8888");
         this.zSubscriber = this.context.socket(ZMQ.XSUB);
+//        this.zSubscriber.setRate(1000000);
         this.zSubscriber.bind("tcp://*:9999");
 
         this.start();

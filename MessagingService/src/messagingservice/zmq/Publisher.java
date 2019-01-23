@@ -22,6 +22,7 @@ public class Publisher extends Thread {
     public Publisher() {
         this.context = ZMQ.context(1);
         this.socket = this.context.socket(ZMQ.PUB);
+//        this.socket.setRate(1000000);
         this.socket.bind("tcp://localhost:9999");
 
         this.start();
@@ -33,8 +34,7 @@ public class Publisher extends Thread {
         Message message;
         while (running && !this.isInterrupted()) {
             try {
-                message = pubQueue.poll(10, TimeUnit.MILLISECONDS);
-                if (message != null) {
+                if ((message = pubQueue.poll(10, TimeUnit.MILLISECONDS)) != null) {
                     // Sennd the message.
                     if (!this.socket.sendMore(message.path) || !this.socket.send(message.body)) {
                         System.out.println("Could not send topic or message. Exiting...");
@@ -42,9 +42,16 @@ public class Publisher extends Thread {
                         break;
                     }
                 }
+                else {
+                    Thread.currentThread().sleep(10);
+                }
             }
-            catch (InterruptedException ex) {}
+            catch (InterruptedException ex) {
+                running = false;
+            }
         }
+
+        // Shutdown
         this.socket.close();
         this.context.close();
     }

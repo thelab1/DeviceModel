@@ -10,6 +10,31 @@
 <project name="RestProxyService" default="default" basedir=".">
     <description>Builds, tests, and runs the project RestProxyService.</description>
     <target name="-post-jar">
+        <fileset id="lib.jars" dir="${basedir}/dist/lib">
+            <include name="**/*.jar" />
+        </fileset>
+        <pathconvert refid="lib.jars" property="mission.jarfiles" pathsep=" ">
+          <map from="${basedir}/dist/lib/" to="/opt/mission/jars/" />
+        </pathconvert>
+        <pathconvert refid="lib.jars" property="rlutils.jarfiles" pathsep=" ">
+          <map from="${basedir}/dist/lib/" to="/opt/rlutils/jars/" />
+        </pathconvert>
+        <property name="manifest.jarfiles" value="${mission.jarfiles} ${rlutils.jarfiles}" />
+        <echo level="info">Manifest Jar Files: ${manifest.jarfiles}</echo>
+
+        <property name="manifest.dest.dir" value="/tmp/${ant.project.name}" />
+        <mkdir dir="${manifest.dest.dir}" />
+        <unzip src="${basedir}/dist/${ant.project.name}.jar" dest="${manifest.dest.dir}">
+            <patternset>
+                <include name="**/MANIFEST.MF"/>
+            </patternset>
+        </unzip>
+        <manifest file="${manifest.dest.dir}/META-INF/MANIFEST.MF" mode="update">
+            <attribute name="Class-Path" value="${manifest.jarfiles}" />
+        </manifest>
+        <jar update="true" destfile="${basedir}/dist/${ant.project.name}.jar" manifest="${manifest.dest.dir}/META-INF/MANIFEST.MF" />
+        <delete dir="${manifest.dest.dir}" />
+
         <echo level="info">Doing Post Jar...</echo>
         <exec executable="doPostJar.sh" resolveexecutable="true"></exec>
     </target>
