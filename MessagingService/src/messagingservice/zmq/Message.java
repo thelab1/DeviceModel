@@ -5,11 +5,11 @@ package messagingservice.zmq;
  * @author pobzeb
  */
 public class Message {
-    public String path;
+    public String topic;
     public byte[] body;
 
-    public Message(String path, byte[] body) {
-        this.path = path;
+    public Message(String topic, byte[] body) {
+        this.topic = topic;
         this.body = body;
     }
 }

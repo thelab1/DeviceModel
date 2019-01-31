@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
+import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 /**
@@ -15,28 +16,24 @@ import org.zeromq.ZMQ;
  */
 public class Publisher extends Thread {
     private final BlockingQueue<Message> pubQueue = new LinkedBlockingQueue<>();
-    private final ZMQ.Context context;
-    private final ZMQ.Socket socket;
     private boolean running = false;
 
     public Publisher() {
-        this.context = ZMQ.context(1);
-        this.socket = this.context.socket(ZMQ.PUB);
-//        this.socket.setRate(1000000);
-        this.socket.bind("tcp://localhost:9999");
-
         this.start();
     }
 
     @Override
     public void run() {
+        ZContext context = new ZContext();
+        ZMQ.Socket socket = context.createSocket(ZMQ.PUB);
+        socket.bind(ZmqProxy.SUB_URI);
         running = true;
         Message message;
         while (running && !this.isInterrupted()) {
             try {
                 if ((message = pubQueue.poll(10, TimeUnit.MILLISECONDS)) != null) {
                     // Sennd the message.
-                    if (!this.socket.sendMore(message.path) || !this.socket.send(message.body)) {
+                    if (!socket.sendMore(message.topic) || !socket.send(message.body)) {
                         System.out.println("Could not send topic or message. Exiting...");
                         running = false;
                         break;
@@ -52,17 +49,29 @@ public class Publisher extends Thread {
         }
 
         // Shutdown
-        this.socket.close();
-        this.context.close();
+        socket.close();
+        context.close();
     }
 
-    public void sendMessage(String topic, byte[] body) {
-        this.pubQueue.offer(new Message(topic, body));
-    }
-
-    public void sendMessage(String topic, DeviceNode body) {
+    public void sendMessage(String systemName, String serviceName, String method, String path, byte[] body) {
+        DeviceNode msgHolder = new DeviceNode("Message");
+        msgHolder.addAttribute("SystemName", systemName);
+        msgHolder.addAttribute("ServiceName", serviceName);
+        msgHolder.addAttribute("Method", method);
+        msgHolder.addAttribute("Path", path);
+        msgHolder.setValue(body);
         try {
-            this.sendMessage(topic, XmlConversions.nodeToXmlString(body).getBytes(Charset.defaultCharset()));
+            this.pubQueue.offer(new Message(systemName+"_"+serviceName, XmlConversions.nodeToXmlString(msgHolder).getBytes(Charset.defaultCharset())));
+        }
+        catch(IOException ex) {
+            System.err.println("Error parsing body");
+            ex.printStackTrace(System.err);
+        }
+    }
+
+    public void sendMessage(String systemName, String serviceName, String method, String path, DeviceNode body) {
+        try {
+            this.sendMessage(systemName, serviceName, method, path, XmlConversions.nodeToXmlString(body).getBytes(Charset.defaultCharset()));
         }
         catch(IOException ex) {
             System.err.println("Error parsing body");

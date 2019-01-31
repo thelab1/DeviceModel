@@ -1,32 +1,35 @@
 package messagingservice.zmq;
 
+import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 /**
  *
  * @author Pobzeb
  */
 public class ZmqProxy extends Thread {
-    private final ZMQ.Context context;
-    private final ZMQ.Socket zSubscriber;
-    private final ZMQ.Socket zPublisher;
+    public static final String PUB_URI = "tcp://localhost:8881";
+    public static final String SUB_URI = "tcp://localhost:8882";
 
-    public ZmqProxy() {
-        this.context = ZMQ.context(1);
-        this.zPublisher = this.context.socket(ZMQ.XPUB);
-//        this.zPublisher.setRate(1000000);
-        this.zPublisher.bind("tcp://*:8888");
-        this.zSubscriber = this.context.socket(ZMQ.XSUB);
-//        this.zSubscriber.setRate(1000000);
-        this.zSubscriber.bind("tcp://*:9999");
-
-        this.start();
-    }
+    public ZmqProxy() {}
 
     @Override
     public void run() {
-        ZMQ.proxy(zPublisher, zSubscriber, null);
-        this.zPublisher.close();
-        this.zSubscriber.close();
-        this.context.close();
+        ZContext context = new ZContext();
+
+        // Create the publisher.
+        ZMQ.Socket xPub = context.createSocket(ZMQ.XPUB);
+        xPub.bind(PUB_URI);
+
+        // Create the subscriber.
+        ZMQ.Socket xSub = context.createSocket(ZMQ.XSUB);
+        xSub.bind(SUB_URI);
+
+        // Create the proxy.
+        ZMQ.proxy(xPub, xSub, null);
+
+        // Close everything.
+        xPub.close();
+        xSub.close();
+        context.close();
     }
 }
