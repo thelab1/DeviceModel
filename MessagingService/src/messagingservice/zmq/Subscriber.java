@@ -14,11 +14,29 @@ import org.zeromq.ZMQ;
  * @author pobzeb
  */
 public abstract class Subscriber extends Thread {
+    private final ZContext context;
     private ZMQ.Socket socket;
     private boolean running = false;
     private CopyOnWriteArrayList<String> subscriptions = new CopyOnWriteArrayList<>();
 
     public Subscriber() {
+        this(new String[0]);
+    }
+
+    public Subscriber(String[] subscriptions) {
+        this.context = new ZContext();
+        this.socket = context.createSocket(ZMQ.SUB);
+        this.socket.bind(ZmqProxy.PUB_URI);
+
+        // Autosubscribe to subscribe and unsubscribe.
+        this.subscriptions.add("subscribe");
+        this.subscriptions.add("unsubscribe");
+
+        // Add the subscriptions passed in.
+        for (String subscription : subscriptions) {
+            this.subscribe(subscription);
+        }
+
         this.start();
     }
 
@@ -37,14 +55,6 @@ public abstract class Subscriber extends Thread {
 
     @Override
     public void run() {
-        ZContext context = new ZContext();
-        this.socket = context.createSocket(ZMQ.SUB);
-        this.socket.bind(ZmqProxy.PUB_URI);
-
-        // Autosubscribe to subscribe and unsubscribe.
-        this.subscriptions.add("subscribe");
-        this.subscriptions.add("unsubscribe");
-
         running = true;
         String topic;
         byte[] body;

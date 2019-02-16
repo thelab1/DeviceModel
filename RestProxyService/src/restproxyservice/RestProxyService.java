@@ -1,6 +1,8 @@
 package restproxyservice;
 
+import devicemodel.DeviceNode;
 import messagingservice.zmq.Publisher;
+import messagingservice.zmq.Subscriber;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.HaltException;
 import spark.Request;
@@ -57,6 +59,18 @@ public class RestProxyService {
             // Create a publisher.
             this.publisher = new Publisher();
 
+            new Subscriber(new String[]{"CLIENT"}) {
+                @Override
+                public void handleMessage(String systemName, String serviceName, String method, String path, byte[] body) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
+                @Override
+                public void handleMessage(String systemName, String serviceName, String method, String path, DeviceNode body) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
+
             System.out.println("Rest Proxy Service Running");
         }
         catch (Exception ex) {
@@ -108,9 +122,7 @@ public class RestProxyService {
         return "";
     }
 
-    public void handleBefore(Request request, Response response) {
-        
-    }
+    public void handleBefore(Request request, Response response) {}
 
     public static void main(String[] args) {
         new RestProxyService();
