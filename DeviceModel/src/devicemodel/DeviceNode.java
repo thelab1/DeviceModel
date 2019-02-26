@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,14 +24,8 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
     private final PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     protected DeviceNode parent;
     protected String name;
-    protected Object value;
-
-    // stores all of this node's children by name
-    protected final List<DeviceNode> children = new ArrayList<>();
-
-    // assumption is that attributes do not regularly change and do not fire events
-    // the element values store the changing data; attributes describe the data
-    // value changes cause events to be triggered and fired, but include attribute for the changed elements
+    protected String value;
+    protected final CopyOnWriteArrayList<DeviceNode> children = new CopyOnWriteArrayList<>();
     protected final ConcurrentHashMap<String, String> attributes = new ConcurrentHashMap<>();
 
     // these are access handlers for the node
@@ -49,22 +44,33 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
         this(name, null);
     }
 
-    public DeviceNode(String name, Object value) {
-        this(name, value, null);
-    }
-
-    public DeviceNode(String name, DeviceNode parent) {
-        this.name = name;
-        if (parent != null) {
-            parent.addChild(this);
-        }
-    }
-
-    public DeviceNode(String name, Object value, DeviceNode parent) {
+    public DeviceNode(String name, String value) {
         this.name = name;
         this.value = value;
-        if (parent != null) {
-            parent.addChild(this);
+    }
+
+    public class DeviceNodeBuilder {
+        private DeviceNode rootNode;
+        private DeviceNode currentNodePointer;
+
+        public DeviceNodeBuilder() {}
+
+        public DeviceNodeBuilder addDeviceNode(String name) {
+            return this.addDeviceNode(name, null);
+        }
+
+        public DeviceNodeBuilder addDeviceNode(String name, String value) {
+            if (this.rootNode == null) {
+                this.rootNode = new DeviceNode(name, value);
+                this.currentNodePointer = this.rootNode;
+            }
+            else {
+                DeviceNode newNode = new DeviceNode(name, value);
+                this.currentNodePointer.addChild(newNode);
+                this.currentNodePointer = newNode;
+            }
+
+            return this;
         }
     }
 
@@ -80,11 +86,11 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
     }
 
     // using this will NOT fire an event, use update() for that
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -111,6 +117,10 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
         return attributes.get(name);
     }
 
+    public void removeAttribute(String name) {
+        this.attributes.remove(name);
+    }
+
     public NodeHandler getSetHandle() {
         return setHandle;
     }
@@ -133,6 +143,26 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
 
     public void setGetHandle(NodeGetHandler getHandle) {
         this.getHandle = getHandle;
+    }
+
+    public DeviceModelProto.DeviceNode.Builder getDeviceNodeProtoBuf() {
+        return this.getDeviceNodeProtoBuf(null);
+    }
+
+    public DeviceModelProto.DeviceNode.Builder getDeviceNodeProtoBuf(DeviceModelProto.DeviceNode.Builder nodeParent) {
+        DeviceModelProto.DeviceNode.Builder devNodeBuilder = DeviceModelProto.DeviceNode.newBuilder();
+
+        if (nodeParent != null) devNodeBuilder.setNodeParent(nodeParent);
+        devNodeBuilder.setName(this.getName());
+        devNodeBuilder.setValue(this.getValue());
+        for (String key : this.attributes.keySet()) {
+            devNodeBuilder.getAttributesMap().put(key, this.attributes.get(key));
+        }
+        for (DeviceNode child : this.children) {
+            devNodeBuilder.getChildrenList().add(child.getDeviceNodeProtoBuf().build());
+        }
+
+        return devNodeBuilder;
     }
 
 // *********************************************** //

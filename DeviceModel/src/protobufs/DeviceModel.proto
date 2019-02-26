@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package devicemodel;
+
+option java_package = "devicemodel";
+option java_outer_classname = "DeviceModelProto";
+
+message DeviceNode {
+    DeviceNode nodeParent = 1;
+    string name = 2;
+    string value = 3;
+    repeated DeviceNode children = 4;
+    map<string, string> attributes = 5;
+}
+
+message Message {
+    enum MessageTypeType {
+        REGISTER = 0;
+        IPROC = 1;
+        WEB = 2;
+        REPLY = 3;
+    }
+
+    enum MethodTypeType {
+        GET = 0;
+        PUT = 1;
+        POST = 2;
+    }
+
+    string messageId = 1;
+    MessageTypeType messageType = 2;
+    string toServiceName = 3;
+    string fromServiceName = 4;
+    MethodTypeType methodType = 5;
+    string path = 6;
+    DeviceNode body = 7;
+}
