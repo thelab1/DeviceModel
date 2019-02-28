@@ -19,68 +19,55 @@ public final class DeviceModelProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-     */
-    boolean hasNodeParent();
-    /**
-     * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-     */
-    devicemodel.DeviceModelProto.DeviceNode getNodeParent();
-    /**
-     * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-     */
-    devicemodel.DeviceModelProto.DeviceNodeOrBuilder getNodeParentOrBuilder();
-
-    /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>string value = 3;</code>
+     * <code>string value = 2;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>string value = 3;</code>
+     * <code>string value = 2;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
 
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     java.util.List<devicemodel.DeviceModelProto.DeviceNode> 
         getChildrenList();
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     devicemodel.DeviceModelProto.DeviceNode getChildren(int index);
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     int getChildrenCount();
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     java.util.List<? extends devicemodel.DeviceModelProto.DeviceNodeOrBuilder> 
         getChildrenOrBuilderList();
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     devicemodel.DeviceModelProto.DeviceNodeOrBuilder getChildrenOrBuilder(
         int index);
 
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
     int getAttributesCount();
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
     boolean containsAttributes(
         java.lang.String key);
@@ -91,19 +78,19 @@ public final class DeviceModelProto {
     java.util.Map<java.lang.String, java.lang.String>
     getAttributes();
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
     java.util.Map<java.lang.String, java.lang.String>
     getAttributesMap();
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
 
     java.lang.String getAttributesOrDefault(
         java.lang.String key,
         java.lang.String defaultValue);
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
 
     java.lang.String getAttributesOrThrow(
@@ -152,44 +139,31 @@ public final class DeviceModelProto {
               done = true;
               break;
             case 10: {
-              devicemodel.DeviceModelProto.DeviceNode.Builder subBuilder = null;
-              if (nodeParent_ != null) {
-                subBuilder = nodeParent_.toBuilder();
-              }
-              nodeParent_ = input.readMessage(devicemodel.DeviceModelProto.DeviceNode.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(nodeParent_);
-                nodeParent_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               value_ = s;
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 children_ = new java.util.ArrayList<devicemodel.DeviceModelProto.DeviceNode>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000004;
               }
               children_.add(
                   input.readMessage(devicemodel.DeviceModelProto.DeviceNode.parser(), extensionRegistry));
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 attributes_ = com.google.protobuf.MapField.newMapField(
                     AttributesDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000008;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               attributes__ = input.readMessage(
@@ -213,7 +187,7 @@ public final class DeviceModelProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) != 0)) {
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
           children_ = java.util.Collections.unmodifiableList(children_);
         }
         this.unknownFields = unknownFields.build();
@@ -230,7 +204,7 @@ public final class DeviceModelProto {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 5:
+        case 4:
           return internalGetAttributes();
         default:
           throw new RuntimeException(
@@ -246,31 +220,10 @@ public final class DeviceModelProto {
     }
 
     private int bitField0_;
-    public static final int NODEPARENT_FIELD_NUMBER = 1;
-    private devicemodel.DeviceModelProto.DeviceNode nodeParent_;
-    /**
-     * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-     */
-    public boolean hasNodeParent() {
-      return nodeParent_ != null;
-    }
-    /**
-     * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-     */
-    public devicemodel.DeviceModelProto.DeviceNode getNodeParent() {
-      return nodeParent_ == null ? devicemodel.DeviceModelProto.DeviceNode.getDefaultInstance() : nodeParent_;
-    }
-    /**
-     * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-     */
-    public devicemodel.DeviceModelProto.DeviceNodeOrBuilder getNodeParentOrBuilder() {
-      return getNodeParent();
-    }
-
-    public static final int NAME_FIELD_NUMBER = 2;
+    public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -285,7 +238,7 @@ public final class DeviceModelProto {
       }
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -301,10 +254,10 @@ public final class DeviceModelProto {
       }
     }
 
-    public static final int VALUE_FIELD_NUMBER = 3;
+    public static final int VALUE_FIELD_NUMBER = 2;
     private volatile java.lang.Object value_;
     /**
-     * <code>string value = 3;</code>
+     * <code>string value = 2;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -319,7 +272,7 @@ public final class DeviceModelProto {
       }
     }
     /**
-     * <code>string value = 3;</code>
+     * <code>string value = 2;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -335,42 +288,42 @@ public final class DeviceModelProto {
       }
     }
 
-    public static final int CHILDREN_FIELD_NUMBER = 4;
+    public static final int CHILDREN_FIELD_NUMBER = 3;
     private java.util.List<devicemodel.DeviceModelProto.DeviceNode> children_;
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     public java.util.List<devicemodel.DeviceModelProto.DeviceNode> getChildrenList() {
       return children_;
     }
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     public java.util.List<? extends devicemodel.DeviceModelProto.DeviceNodeOrBuilder> 
         getChildrenOrBuilderList() {
       return children_;
     }
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     public int getChildrenCount() {
       return children_.size();
     }
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     public devicemodel.DeviceModelProto.DeviceNode getChildren(int index) {
       return children_.get(index);
     }
     /**
-     * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+     * <code>repeated .devicemodel.DeviceNode children = 3;</code>
      */
     public devicemodel.DeviceModelProto.DeviceNodeOrBuilder getChildrenOrBuilder(
         int index) {
       return children_.get(index);
     }
 
-    public static final int ATTRIBUTES_FIELD_NUMBER = 5;
+    public static final int ATTRIBUTES_FIELD_NUMBER = 4;
     private static final class AttributesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, java.lang.String> defaultEntry =
@@ -397,7 +350,7 @@ public final class DeviceModelProto {
       return internalGetAttributes().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
 
     public boolean containsAttributes(
@@ -413,14 +366,14 @@ public final class DeviceModelProto {
       return getAttributesMap();
     }
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.String> getAttributesMap() {
       return internalGetAttributes().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
 
     public java.lang.String getAttributesOrDefault(
@@ -432,7 +385,7 @@ public final class DeviceModelProto {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; attributes = 5;</code>
+     * <code>map&lt;string, string&gt; attributes = 4;</code>
      */
 
     public java.lang.String getAttributesOrThrow(
@@ -460,24 +413,21 @@ public final class DeviceModelProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (nodeParent_ != null) {
-        output.writeMessage(1, getNodeParent());
-      }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
       if (!getValueBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
       }
       for (int i = 0; i < children_.size(); i++) {
-        output.writeMessage(4, children_.get(i));
+        output.writeMessage(3, children_.get(i));
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetAttributes(),
           AttributesDefaultEntryHolder.defaultEntry,
-          5);
+          4);
       unknownFields.writeTo(output);
     }
 
@@ -487,19 +437,15 @@ public final class DeviceModelProto {
       if (size != -1) return size;
 
       size = 0;
-      if (nodeParent_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getNodeParent());
-      }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
       if (!getValueBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
       }
       for (int i = 0; i < children_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, children_.get(i));
+          .computeMessageSize(3, children_.get(i));
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
            : internalGetAttributes().getMap().entrySet()) {
@@ -509,7 +455,7 @@ public final class DeviceModelProto {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(5, attributes__);
+            .computeMessageSize(4, attributes__);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -526,11 +472,6 @@ public final class DeviceModelProto {
       }
       devicemodel.DeviceModelProto.DeviceNode other = (devicemodel.DeviceModelProto.DeviceNode) obj;
 
-      if (hasNodeParent() != other.hasNodeParent()) return false;
-      if (hasNodeParent()) {
-        if (!getNodeParent()
-            .equals(other.getNodeParent())) return false;
-      }
       if (!getName()
           .equals(other.getName())) return false;
       if (!getValue()
@@ -550,10 +491,6 @@ public final class DeviceModelProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasNodeParent()) {
-        hash = (37 * hash) + NODEPARENT_FIELD_NUMBER;
-        hash = (53 * hash) + getNodeParent().hashCode();
-      }
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -677,7 +614,7 @@ public final class DeviceModelProto {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 5:
+          case 4:
             return internalGetAttributes();
           default:
             throw new RuntimeException(
@@ -688,7 +625,7 @@ public final class DeviceModelProto {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 5:
+          case 4:
             return internalGetMutableAttributes();
           default:
             throw new RuntimeException(
@@ -722,19 +659,13 @@ public final class DeviceModelProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (nodeParentBuilder_ == null) {
-          nodeParent_ = null;
-        } else {
-          nodeParent_ = null;
-          nodeParentBuilder_ = null;
-        }
         name_ = "";
 
         value_ = "";
 
         if (childrenBuilder_ == null) {
           children_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           childrenBuilder_.clear();
         }
@@ -767,17 +698,12 @@ public final class DeviceModelProto {
         devicemodel.DeviceModelProto.DeviceNode result = new devicemodel.DeviceModelProto.DeviceNode(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (nodeParentBuilder_ == null) {
-          result.nodeParent_ = nodeParent_;
-        } else {
-          result.nodeParent_ = nodeParentBuilder_.build();
-        }
         result.name_ = name_;
         result.value_ = value_;
         if (childrenBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             children_ = java.util.Collections.unmodifiableList(children_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.children_ = children_;
         } else {
@@ -834,9 +760,6 @@ public final class DeviceModelProto {
 
       public Builder mergeFrom(devicemodel.DeviceModelProto.DeviceNode other) {
         if (other == devicemodel.DeviceModelProto.DeviceNode.getDefaultInstance()) return this;
-        if (other.hasNodeParent()) {
-          mergeNodeParent(other.getNodeParent());
-        }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
@@ -849,7 +772,7 @@ public final class DeviceModelProto {
           if (!other.children_.isEmpty()) {
             if (children_.isEmpty()) {
               children_ = other.children_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureChildrenIsMutable();
               children_.addAll(other.children_);
@@ -862,7 +785,7 @@ public final class DeviceModelProto {
               childrenBuilder_.dispose();
               childrenBuilder_ = null;
               children_ = other.children_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
               childrenBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getChildrenFieldBuilder() : null;
@@ -903,126 +826,9 @@ public final class DeviceModelProto {
       }
       private int bitField0_;
 
-      private devicemodel.DeviceModelProto.DeviceNode nodeParent_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          devicemodel.DeviceModelProto.DeviceNode, devicemodel.DeviceModelProto.DeviceNode.Builder, devicemodel.DeviceModelProto.DeviceNodeOrBuilder> nodeParentBuilder_;
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public boolean hasNodeParent() {
-        return nodeParentBuilder_ != null || nodeParent_ != null;
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public devicemodel.DeviceModelProto.DeviceNode getNodeParent() {
-        if (nodeParentBuilder_ == null) {
-          return nodeParent_ == null ? devicemodel.DeviceModelProto.DeviceNode.getDefaultInstance() : nodeParent_;
-        } else {
-          return nodeParentBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public Builder setNodeParent(devicemodel.DeviceModelProto.DeviceNode value) {
-        if (nodeParentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          nodeParent_ = value;
-          onChanged();
-        } else {
-          nodeParentBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public Builder setNodeParent(
-          devicemodel.DeviceModelProto.DeviceNode.Builder builderForValue) {
-        if (nodeParentBuilder_ == null) {
-          nodeParent_ = builderForValue.build();
-          onChanged();
-        } else {
-          nodeParentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public Builder mergeNodeParent(devicemodel.DeviceModelProto.DeviceNode value) {
-        if (nodeParentBuilder_ == null) {
-          if (nodeParent_ != null) {
-            nodeParent_ =
-              devicemodel.DeviceModelProto.DeviceNode.newBuilder(nodeParent_).mergeFrom(value).buildPartial();
-          } else {
-            nodeParent_ = value;
-          }
-          onChanged();
-        } else {
-          nodeParentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public Builder clearNodeParent() {
-        if (nodeParentBuilder_ == null) {
-          nodeParent_ = null;
-          onChanged();
-        } else {
-          nodeParent_ = null;
-          nodeParentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public devicemodel.DeviceModelProto.DeviceNode.Builder getNodeParentBuilder() {
-        
-        onChanged();
-        return getNodeParentFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      public devicemodel.DeviceModelProto.DeviceNodeOrBuilder getNodeParentOrBuilder() {
-        if (nodeParentBuilder_ != null) {
-          return nodeParentBuilder_.getMessageOrBuilder();
-        } else {
-          return nodeParent_ == null ?
-              devicemodel.DeviceModelProto.DeviceNode.getDefaultInstance() : nodeParent_;
-        }
-      }
-      /**
-       * <code>.devicemodel.DeviceNode nodeParent = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          devicemodel.DeviceModelProto.DeviceNode, devicemodel.DeviceModelProto.DeviceNode.Builder, devicemodel.DeviceModelProto.DeviceNodeOrBuilder> 
-          getNodeParentFieldBuilder() {
-        if (nodeParentBuilder_ == null) {
-          nodeParentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              devicemodel.DeviceModelProto.DeviceNode, devicemodel.DeviceModelProto.DeviceNode.Builder, devicemodel.DeviceModelProto.DeviceNodeOrBuilder>(
-                  getNodeParent(),
-                  getParentForChildren(),
-                  isClean());
-          nodeParent_ = null;
-        }
-        return nodeParentBuilder_;
-      }
-
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -1037,7 +843,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -1053,7 +859,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -1066,7 +872,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -1075,7 +881,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -1091,7 +897,7 @@ public final class DeviceModelProto {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>string value = 3;</code>
+       * <code>string value = 2;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -1106,7 +912,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string value = 3;</code>
+       * <code>string value = 2;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -1122,7 +928,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string value = 3;</code>
+       * <code>string value = 2;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -1135,7 +941,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string value = 3;</code>
+       * <code>string value = 2;</code>
        */
       public Builder clearValue() {
         
@@ -1144,7 +950,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string value = 3;</code>
+       * <code>string value = 2;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -1161,9 +967,9 @@ public final class DeviceModelProto {
       private java.util.List<devicemodel.DeviceModelProto.DeviceNode> children_ =
         java.util.Collections.emptyList();
       private void ensureChildrenIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           children_ = new java.util.ArrayList<devicemodel.DeviceModelProto.DeviceNode>(children_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -1171,7 +977,7 @@ public final class DeviceModelProto {
           devicemodel.DeviceModelProto.DeviceNode, devicemodel.DeviceModelProto.DeviceNode.Builder, devicemodel.DeviceModelProto.DeviceNodeOrBuilder> childrenBuilder_;
 
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public java.util.List<devicemodel.DeviceModelProto.DeviceNode> getChildrenList() {
         if (childrenBuilder_ == null) {
@@ -1181,7 +987,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public int getChildrenCount() {
         if (childrenBuilder_ == null) {
@@ -1191,7 +997,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public devicemodel.DeviceModelProto.DeviceNode getChildren(int index) {
         if (childrenBuilder_ == null) {
@@ -1201,7 +1007,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder setChildren(
           int index, devicemodel.DeviceModelProto.DeviceNode value) {
@@ -1218,7 +1024,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder setChildren(
           int index, devicemodel.DeviceModelProto.DeviceNode.Builder builderForValue) {
@@ -1232,7 +1038,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder addChildren(devicemodel.DeviceModelProto.DeviceNode value) {
         if (childrenBuilder_ == null) {
@@ -1248,7 +1054,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder addChildren(
           int index, devicemodel.DeviceModelProto.DeviceNode value) {
@@ -1265,7 +1071,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder addChildren(
           devicemodel.DeviceModelProto.DeviceNode.Builder builderForValue) {
@@ -1279,7 +1085,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder addChildren(
           int index, devicemodel.DeviceModelProto.DeviceNode.Builder builderForValue) {
@@ -1293,7 +1099,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder addAllChildren(
           java.lang.Iterable<? extends devicemodel.DeviceModelProto.DeviceNode> values) {
@@ -1308,12 +1114,12 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder clearChildren() {
         if (childrenBuilder_ == null) {
           children_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           childrenBuilder_.clear();
@@ -1321,7 +1127,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public Builder removeChildren(int index) {
         if (childrenBuilder_ == null) {
@@ -1334,14 +1140,14 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public devicemodel.DeviceModelProto.DeviceNode.Builder getChildrenBuilder(
           int index) {
         return getChildrenFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public devicemodel.DeviceModelProto.DeviceNodeOrBuilder getChildrenOrBuilder(
           int index) {
@@ -1351,7 +1157,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public java.util.List<? extends devicemodel.DeviceModelProto.DeviceNodeOrBuilder> 
            getChildrenOrBuilderList() {
@@ -1362,14 +1168,14 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public devicemodel.DeviceModelProto.DeviceNode.Builder addChildrenBuilder() {
         return getChildrenFieldBuilder().addBuilder(
             devicemodel.DeviceModelProto.DeviceNode.getDefaultInstance());
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public devicemodel.DeviceModelProto.DeviceNode.Builder addChildrenBuilder(
           int index) {
@@ -1377,7 +1183,7 @@ public final class DeviceModelProto {
             index, devicemodel.DeviceModelProto.DeviceNode.getDefaultInstance());
       }
       /**
-       * <code>repeated .devicemodel.DeviceNode children = 4;</code>
+       * <code>repeated .devicemodel.DeviceNode children = 3;</code>
        */
       public java.util.List<devicemodel.DeviceModelProto.DeviceNode.Builder> 
            getChildrenBuilderList() {
@@ -1390,7 +1196,7 @@ public final class DeviceModelProto {
           childrenBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               devicemodel.DeviceModelProto.DeviceNode, devicemodel.DeviceModelProto.DeviceNode.Builder, devicemodel.DeviceModelProto.DeviceNodeOrBuilder>(
                   children_,
-                  ((bitField0_ & 0x00000008) != 0),
+                  ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
           children_ = null;
@@ -1425,7 +1231,7 @@ public final class DeviceModelProto {
         return internalGetAttributes().getMap().size();
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
 
       public boolean containsAttributes(
@@ -1441,14 +1247,14 @@ public final class DeviceModelProto {
         return getAttributesMap();
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.String> getAttributesMap() {
         return internalGetAttributes().getMap();
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
 
       public java.lang.String getAttributesOrDefault(
@@ -1460,7 +1266,7 @@ public final class DeviceModelProto {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
 
       public java.lang.String getAttributesOrThrow(
@@ -1480,7 +1286,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
 
       public Builder removeAttributes(
@@ -1499,7 +1305,7 @@ public final class DeviceModelProto {
         return internalGetMutableAttributes().getMutableMap();
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
       public Builder putAttributes(
           java.lang.String key,
@@ -1511,7 +1317,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>map&lt;string, string&gt; attributes = 5;</code>
+       * <code>map&lt;string, string&gt; attributes = 4;</code>
        */
 
       public Builder putAllAttributes(
@@ -1573,8 +1379,8 @@ public final class DeviceModelProto {
 
   }
 
-  public interface MessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:devicemodel.Message)
+  public interface MessageBlockOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:devicemodel.MessageBlock)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1588,42 +1394,42 @@ public final class DeviceModelProto {
         getMessageIdBytes();
 
     /**
-     * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+     * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
      */
     int getMessageTypeValue();
     /**
-     * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+     * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
      */
-    devicemodel.DeviceModelProto.Message.MessageTypeType getMessageType();
+    devicemodel.DeviceModelProto.MessageBlock.MessageTypeType getMessageType();
 
     /**
-     * <code>string toServiceName = 3;</code>
+     * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+     */
+    int getMethodTypeValue();
+    /**
+     * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+     */
+    devicemodel.DeviceModelProto.MessageBlock.MethodTypeType getMethodType();
+
+    /**
+     * <code>string toServiceName = 4;</code>
      */
     java.lang.String getToServiceName();
     /**
-     * <code>string toServiceName = 3;</code>
+     * <code>string toServiceName = 4;</code>
      */
     com.google.protobuf.ByteString
         getToServiceNameBytes();
 
     /**
-     * <code>string fromServiceName = 4;</code>
+     * <code>string fromServiceName = 5;</code>
      */
     java.lang.String getFromServiceName();
     /**
-     * <code>string fromServiceName = 4;</code>
+     * <code>string fromServiceName = 5;</code>
      */
     com.google.protobuf.ByteString
         getFromServiceNameBytes();
-
-    /**
-     * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-     */
-    int getMethodTypeValue();
-    /**
-     * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-     */
-    devicemodel.DeviceModelProto.Message.MethodTypeType getMethodType();
 
     /**
      * <code>string path = 6;</code>
@@ -1649,23 +1455,23 @@ public final class DeviceModelProto {
     devicemodel.DeviceModelProto.DeviceNodeOrBuilder getBodyOrBuilder();
   }
   /**
-   * Protobuf type {@code devicemodel.Message}
+   * Protobuf type {@code devicemodel.MessageBlock}
    */
-  public  static final class Message extends
+  public  static final class MessageBlock extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:devicemodel.Message)
-      MessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:devicemodel.MessageBlock)
+      MessageBlockOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Message.newBuilder() to construct.
-    private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use MessageBlock.newBuilder() to construct.
+    private MessageBlock(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Message() {
+    private MessageBlock() {
       messageId_ = "";
       messageType_ = 0;
+      methodType_ = 0;
       toServiceName_ = "";
       fromServiceName_ = "";
-      methodType_ = 0;
       path_ = "";
     }
 
@@ -1674,7 +1480,7 @@ public final class DeviceModelProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Message(
+    private MessageBlock(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1705,22 +1511,22 @@ public final class DeviceModelProto {
               messageType_ = rawValue;
               break;
             }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 24: {
+              int rawValue = input.readEnum();
 
-              toServiceName_ = s;
+              methodType_ = rawValue;
               break;
             }
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              fromServiceName_ = s;
+              toServiceName_ = s;
               break;
             }
-            case 40: {
-              int rawValue = input.readEnum();
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              methodType_ = rawValue;
+              fromServiceName_ = s;
               break;
             }
             case 50: {
@@ -1763,19 +1569,19 @@ public final class DeviceModelProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return devicemodel.DeviceModelProto.internal_static_devicemodel_Message_descriptor;
+      return devicemodel.DeviceModelProto.internal_static_devicemodel_MessageBlock_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return devicemodel.DeviceModelProto.internal_static_devicemodel_Message_fieldAccessorTable
+      return devicemodel.DeviceModelProto.internal_static_devicemodel_MessageBlock_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              devicemodel.DeviceModelProto.Message.class, devicemodel.DeviceModelProto.Message.Builder.class);
+              devicemodel.DeviceModelProto.MessageBlock.class, devicemodel.DeviceModelProto.MessageBlock.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code devicemodel.Message.MessageTypeType}
+     * Protobuf enum {@code devicemodel.MessageBlock.MessageTypeType}
      */
     public enum MessageTypeType
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -1784,17 +1590,25 @@ public final class DeviceModelProto {
        */
       REGISTER(0),
       /**
-       * <code>IPROC = 1;</code>
+       * <code>HEARTBEAT = 1;</code>
        */
-      IPROC(1),
+      HEARTBEAT(1),
       /**
-       * <code>WEB = 2;</code>
+       * <code>IPROC = 2;</code>
        */
-      WEB(2),
+      IPROC(2),
       /**
-       * <code>REPLY = 3;</code>
+       * <code>WEB = 3;</code>
        */
-      REPLY(3),
+      WEB(3),
+      /**
+       * <code>REPLY = 4;</code>
+       */
+      REPLY(4),
+      /**
+       * <code>STREAM = 5;</code>
+       */
+      STREAM(5),
       UNRECOGNIZED(-1),
       ;
 
@@ -1803,17 +1617,25 @@ public final class DeviceModelProto {
        */
       public static final int REGISTER_VALUE = 0;
       /**
-       * <code>IPROC = 1;</code>
+       * <code>HEARTBEAT = 1;</code>
        */
-      public static final int IPROC_VALUE = 1;
+      public static final int HEARTBEAT_VALUE = 1;
       /**
-       * <code>WEB = 2;</code>
+       * <code>IPROC = 2;</code>
        */
-      public static final int WEB_VALUE = 2;
+      public static final int IPROC_VALUE = 2;
       /**
-       * <code>REPLY = 3;</code>
+       * <code>WEB = 3;</code>
        */
-      public static final int REPLY_VALUE = 3;
+      public static final int WEB_VALUE = 3;
+      /**
+       * <code>REPLY = 4;</code>
+       */
+      public static final int REPLY_VALUE = 4;
+      /**
+       * <code>STREAM = 5;</code>
+       */
+      public static final int STREAM_VALUE = 5;
 
 
       public final int getNumber() {
@@ -1835,9 +1657,11 @@ public final class DeviceModelProto {
       public static MessageTypeType forNumber(int value) {
         switch (value) {
           case 0: return REGISTER;
-          case 1: return IPROC;
-          case 2: return WEB;
-          case 3: return REPLY;
+          case 1: return HEARTBEAT;
+          case 2: return IPROC;
+          case 3: return WEB;
+          case 4: return REPLY;
+          case 5: return STREAM;
           default: return null;
         }
       }
@@ -1864,7 +1688,7 @@ public final class DeviceModelProto {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return devicemodel.DeviceModelProto.Message.getDescriptor().getEnumTypes().get(0);
+        return devicemodel.DeviceModelProto.MessageBlock.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final MessageTypeType[] VALUES = values();
@@ -1887,11 +1711,11 @@ public final class DeviceModelProto {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:devicemodel.Message.MessageTypeType)
+      // @@protoc_insertion_point(enum_scope:devicemodel.MessageBlock.MessageTypeType)
     }
 
     /**
-     * Protobuf enum {@code devicemodel.Message.MethodTypeType}
+     * Protobuf enum {@code devicemodel.MessageBlock.MethodTypeType}
      */
     public enum MethodTypeType
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -1971,7 +1795,7 @@ public final class DeviceModelProto {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return devicemodel.DeviceModelProto.Message.getDescriptor().getEnumTypes().get(1);
+        return devicemodel.DeviceModelProto.MessageBlock.getDescriptor().getEnumTypes().get(1);
       }
 
       private static final MethodTypeType[] VALUES = values();
@@ -1994,7 +1818,7 @@ public final class DeviceModelProto {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:devicemodel.Message.MethodTypeType)
+      // @@protoc_insertion_point(enum_scope:devicemodel.MessageBlock.MethodTypeType)
     }
 
     public static final int MESSAGEID_FIELD_NUMBER = 1;
@@ -2034,24 +1858,41 @@ public final class DeviceModelProto {
     public static final int MESSAGETYPE_FIELD_NUMBER = 2;
     private int messageType_;
     /**
-     * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+     * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
      */
     public int getMessageTypeValue() {
       return messageType_;
     }
     /**
-     * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+     * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
      */
-    public devicemodel.DeviceModelProto.Message.MessageTypeType getMessageType() {
+    public devicemodel.DeviceModelProto.MessageBlock.MessageTypeType getMessageType() {
       @SuppressWarnings("deprecation")
-      devicemodel.DeviceModelProto.Message.MessageTypeType result = devicemodel.DeviceModelProto.Message.MessageTypeType.valueOf(messageType_);
-      return result == null ? devicemodel.DeviceModelProto.Message.MessageTypeType.UNRECOGNIZED : result;
+      devicemodel.DeviceModelProto.MessageBlock.MessageTypeType result = devicemodel.DeviceModelProto.MessageBlock.MessageTypeType.valueOf(messageType_);
+      return result == null ? devicemodel.DeviceModelProto.MessageBlock.MessageTypeType.UNRECOGNIZED : result;
     }
 
-    public static final int TOSERVICENAME_FIELD_NUMBER = 3;
+    public static final int METHODTYPE_FIELD_NUMBER = 3;
+    private int methodType_;
+    /**
+     * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+     */
+    public int getMethodTypeValue() {
+      return methodType_;
+    }
+    /**
+     * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+     */
+    public devicemodel.DeviceModelProto.MessageBlock.MethodTypeType getMethodType() {
+      @SuppressWarnings("deprecation")
+      devicemodel.DeviceModelProto.MessageBlock.MethodTypeType result = devicemodel.DeviceModelProto.MessageBlock.MethodTypeType.valueOf(methodType_);
+      return result == null ? devicemodel.DeviceModelProto.MessageBlock.MethodTypeType.UNRECOGNIZED : result;
+    }
+
+    public static final int TOSERVICENAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object toServiceName_;
     /**
-     * <code>string toServiceName = 3;</code>
+     * <code>string toServiceName = 4;</code>
      */
     public java.lang.String getToServiceName() {
       java.lang.Object ref = toServiceName_;
@@ -2066,7 +1907,7 @@ public final class DeviceModelProto {
       }
     }
     /**
-     * <code>string toServiceName = 3;</code>
+     * <code>string toServiceName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getToServiceNameBytes() {
@@ -2082,10 +1923,10 @@ public final class DeviceModelProto {
       }
     }
 
-    public static final int FROMSERVICENAME_FIELD_NUMBER = 4;
+    public static final int FROMSERVICENAME_FIELD_NUMBER = 5;
     private volatile java.lang.Object fromServiceName_;
     /**
-     * <code>string fromServiceName = 4;</code>
+     * <code>string fromServiceName = 5;</code>
      */
     public java.lang.String getFromServiceName() {
       java.lang.Object ref = fromServiceName_;
@@ -2100,7 +1941,7 @@ public final class DeviceModelProto {
       }
     }
     /**
-     * <code>string fromServiceName = 4;</code>
+     * <code>string fromServiceName = 5;</code>
      */
     public com.google.protobuf.ByteString
         getFromServiceNameBytes() {
@@ -2114,23 +1955,6 @@ public final class DeviceModelProto {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int METHODTYPE_FIELD_NUMBER = 5;
-    private int methodType_;
-    /**
-     * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-     */
-    public int getMethodTypeValue() {
-      return methodType_;
-    }
-    /**
-     * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-     */
-    public devicemodel.DeviceModelProto.Message.MethodTypeType getMethodType() {
-      @SuppressWarnings("deprecation")
-      devicemodel.DeviceModelProto.Message.MethodTypeType result = devicemodel.DeviceModelProto.Message.MethodTypeType.valueOf(methodType_);
-      return result == null ? devicemodel.DeviceModelProto.Message.MethodTypeType.UNRECOGNIZED : result;
     }
 
     public static final int PATH_FIELD_NUMBER = 6;
@@ -2205,17 +2029,17 @@ public final class DeviceModelProto {
       if (!getMessageIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, messageId_);
       }
-      if (messageType_ != devicemodel.DeviceModelProto.Message.MessageTypeType.REGISTER.getNumber()) {
+      if (messageType_ != devicemodel.DeviceModelProto.MessageBlock.MessageTypeType.REGISTER.getNumber()) {
         output.writeEnum(2, messageType_);
       }
+      if (methodType_ != devicemodel.DeviceModelProto.MessageBlock.MethodTypeType.GET.getNumber()) {
+        output.writeEnum(3, methodType_);
+      }
       if (!getToServiceNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, toServiceName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, toServiceName_);
       }
       if (!getFromServiceNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, fromServiceName_);
-      }
-      if (methodType_ != devicemodel.DeviceModelProto.Message.MethodTypeType.GET.getNumber()) {
-        output.writeEnum(5, methodType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, fromServiceName_);
       }
       if (!getPathBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, path_);
@@ -2235,19 +2059,19 @@ public final class DeviceModelProto {
       if (!getMessageIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, messageId_);
       }
-      if (messageType_ != devicemodel.DeviceModelProto.Message.MessageTypeType.REGISTER.getNumber()) {
+      if (messageType_ != devicemodel.DeviceModelProto.MessageBlock.MessageTypeType.REGISTER.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, messageType_);
       }
+      if (methodType_ != devicemodel.DeviceModelProto.MessageBlock.MethodTypeType.GET.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, methodType_);
+      }
       if (!getToServiceNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, toServiceName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, toServiceName_);
       }
       if (!getFromServiceNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, fromServiceName_);
-      }
-      if (methodType_ != devicemodel.DeviceModelProto.Message.MethodTypeType.GET.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, methodType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, fromServiceName_);
       }
       if (!getPathBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, path_);
@@ -2266,19 +2090,19 @@ public final class DeviceModelProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof devicemodel.DeviceModelProto.Message)) {
+      if (!(obj instanceof devicemodel.DeviceModelProto.MessageBlock)) {
         return super.equals(obj);
       }
-      devicemodel.DeviceModelProto.Message other = (devicemodel.DeviceModelProto.Message) obj;
+      devicemodel.DeviceModelProto.MessageBlock other = (devicemodel.DeviceModelProto.MessageBlock) obj;
 
       if (!getMessageId()
           .equals(other.getMessageId())) return false;
       if (messageType_ != other.messageType_) return false;
+      if (methodType_ != other.methodType_) return false;
       if (!getToServiceName()
           .equals(other.getToServiceName())) return false;
       if (!getFromServiceName()
           .equals(other.getFromServiceName())) return false;
-      if (methodType_ != other.methodType_) return false;
       if (!getPath()
           .equals(other.getPath())) return false;
       if (hasBody() != other.hasBody()) return false;
@@ -2301,12 +2125,12 @@ public final class DeviceModelProto {
       hash = (53 * hash) + getMessageId().hashCode();
       hash = (37 * hash) + MESSAGETYPE_FIELD_NUMBER;
       hash = (53 * hash) + messageType_;
+      hash = (37 * hash) + METHODTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + methodType_;
       hash = (37 * hash) + TOSERVICENAME_FIELD_NUMBER;
       hash = (53 * hash) + getToServiceName().hashCode();
       hash = (37 * hash) + FROMSERVICENAME_FIELD_NUMBER;
       hash = (53 * hash) + getFromServiceName().hashCode();
-      hash = (37 * hash) + METHODTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + methodType_;
       hash = (37 * hash) + PATH_FIELD_NUMBER;
       hash = (53 * hash) + getPath().hashCode();
       if (hasBody()) {
@@ -2318,69 +2142,69 @@ public final class DeviceModelProto {
       return hash;
     }
 
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(byte[] data)
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(java.io.InputStream input)
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static devicemodel.DeviceModelProto.Message parseDelimitedFrom(java.io.InputStream input)
+    public static devicemodel.DeviceModelProto.MessageBlock parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static devicemodel.DeviceModelProto.Message parseDelimitedFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static devicemodel.DeviceModelProto.Message parseFrom(
+    public static devicemodel.DeviceModelProto.MessageBlock parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2393,7 +2217,7 @@ public final class DeviceModelProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(devicemodel.DeviceModelProto.Message prototype) {
+    public static Builder newBuilder(devicemodel.DeviceModelProto.MessageBlock prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2409,26 +2233,26 @@ public final class DeviceModelProto {
       return builder;
     }
     /**
-     * Protobuf type {@code devicemodel.Message}
+     * Protobuf type {@code devicemodel.MessageBlock}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:devicemodel.Message)
-        devicemodel.DeviceModelProto.MessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:devicemodel.MessageBlock)
+        devicemodel.DeviceModelProto.MessageBlockOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return devicemodel.DeviceModelProto.internal_static_devicemodel_Message_descriptor;
+        return devicemodel.DeviceModelProto.internal_static_devicemodel_MessageBlock_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return devicemodel.DeviceModelProto.internal_static_devicemodel_Message_fieldAccessorTable
+        return devicemodel.DeviceModelProto.internal_static_devicemodel_MessageBlock_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                devicemodel.DeviceModelProto.Message.class, devicemodel.DeviceModelProto.Message.Builder.class);
+                devicemodel.DeviceModelProto.MessageBlock.class, devicemodel.DeviceModelProto.MessageBlock.Builder.class);
       }
 
-      // Construct using devicemodel.DeviceModelProto.Message.newBuilder()
+      // Construct using devicemodel.DeviceModelProto.MessageBlock.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2450,11 +2274,11 @@ public final class DeviceModelProto {
 
         messageType_ = 0;
 
+        methodType_ = 0;
+
         toServiceName_ = "";
 
         fromServiceName_ = "";
-
-        methodType_ = 0;
 
         path_ = "";
 
@@ -2470,17 +2294,17 @@ public final class DeviceModelProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return devicemodel.DeviceModelProto.internal_static_devicemodel_Message_descriptor;
+        return devicemodel.DeviceModelProto.internal_static_devicemodel_MessageBlock_descriptor;
       }
 
       @java.lang.Override
-      public devicemodel.DeviceModelProto.Message getDefaultInstanceForType() {
-        return devicemodel.DeviceModelProto.Message.getDefaultInstance();
+      public devicemodel.DeviceModelProto.MessageBlock getDefaultInstanceForType() {
+        return devicemodel.DeviceModelProto.MessageBlock.getDefaultInstance();
       }
 
       @java.lang.Override
-      public devicemodel.DeviceModelProto.Message build() {
-        devicemodel.DeviceModelProto.Message result = buildPartial();
+      public devicemodel.DeviceModelProto.MessageBlock build() {
+        devicemodel.DeviceModelProto.MessageBlock result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2488,13 +2312,13 @@ public final class DeviceModelProto {
       }
 
       @java.lang.Override
-      public devicemodel.DeviceModelProto.Message buildPartial() {
-        devicemodel.DeviceModelProto.Message result = new devicemodel.DeviceModelProto.Message(this);
+      public devicemodel.DeviceModelProto.MessageBlock buildPartial() {
+        devicemodel.DeviceModelProto.MessageBlock result = new devicemodel.DeviceModelProto.MessageBlock(this);
         result.messageId_ = messageId_;
         result.messageType_ = messageType_;
+        result.methodType_ = methodType_;
         result.toServiceName_ = toServiceName_;
         result.fromServiceName_ = fromServiceName_;
-        result.methodType_ = methodType_;
         result.path_ = path_;
         if (bodyBuilder_ == null) {
           result.body_ = body_;
@@ -2539,22 +2363,25 @@ public final class DeviceModelProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof devicemodel.DeviceModelProto.Message) {
-          return mergeFrom((devicemodel.DeviceModelProto.Message)other);
+        if (other instanceof devicemodel.DeviceModelProto.MessageBlock) {
+          return mergeFrom((devicemodel.DeviceModelProto.MessageBlock)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(devicemodel.DeviceModelProto.Message other) {
-        if (other == devicemodel.DeviceModelProto.Message.getDefaultInstance()) return this;
+      public Builder mergeFrom(devicemodel.DeviceModelProto.MessageBlock other) {
+        if (other == devicemodel.DeviceModelProto.MessageBlock.getDefaultInstance()) return this;
         if (!other.getMessageId().isEmpty()) {
           messageId_ = other.messageId_;
           onChanged();
         }
         if (other.messageType_ != 0) {
           setMessageTypeValue(other.getMessageTypeValue());
+        }
+        if (other.methodType_ != 0) {
+          setMethodTypeValue(other.getMethodTypeValue());
         }
         if (!other.getToServiceName().isEmpty()) {
           toServiceName_ = other.toServiceName_;
@@ -2563,9 +2390,6 @@ public final class DeviceModelProto {
         if (!other.getFromServiceName().isEmpty()) {
           fromServiceName_ = other.fromServiceName_;
           onChanged();
-        }
-        if (other.methodType_ != 0) {
-          setMethodTypeValue(other.getMethodTypeValue());
         }
         if (!other.getPath().isEmpty()) {
           path_ = other.path_;
@@ -2589,11 +2413,11 @@ public final class DeviceModelProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        devicemodel.DeviceModelProto.Message parsedMessage = null;
+        devicemodel.DeviceModelProto.MessageBlock parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (devicemodel.DeviceModelProto.Message) e.getUnfinishedMessage();
+          parsedMessage = (devicemodel.DeviceModelProto.MessageBlock) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2674,13 +2498,13 @@ public final class DeviceModelProto {
 
       private int messageType_ = 0;
       /**
-       * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+       * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
        */
       public int getMessageTypeValue() {
         return messageType_;
       }
       /**
-       * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+       * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
        */
       public Builder setMessageTypeValue(int value) {
         messageType_ = value;
@@ -2688,17 +2512,17 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+       * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
        */
-      public devicemodel.DeviceModelProto.Message.MessageTypeType getMessageType() {
+      public devicemodel.DeviceModelProto.MessageBlock.MessageTypeType getMessageType() {
         @SuppressWarnings("deprecation")
-        devicemodel.DeviceModelProto.Message.MessageTypeType result = devicemodel.DeviceModelProto.Message.MessageTypeType.valueOf(messageType_);
-        return result == null ? devicemodel.DeviceModelProto.Message.MessageTypeType.UNRECOGNIZED : result;
+        devicemodel.DeviceModelProto.MessageBlock.MessageTypeType result = devicemodel.DeviceModelProto.MessageBlock.MessageTypeType.valueOf(messageType_);
+        return result == null ? devicemodel.DeviceModelProto.MessageBlock.MessageTypeType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+       * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
        */
-      public Builder setMessageType(devicemodel.DeviceModelProto.Message.MessageTypeType value) {
+      public Builder setMessageType(devicemodel.DeviceModelProto.MessageBlock.MessageTypeType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2708,7 +2532,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>.devicemodel.Message.MessageTypeType messageType = 2;</code>
+       * <code>.devicemodel.MessageBlock.MessageTypeType messageType = 2;</code>
        */
       public Builder clearMessageType() {
         
@@ -2717,9 +2541,54 @@ public final class DeviceModelProto {
         return this;
       }
 
+      private int methodType_ = 0;
+      /**
+       * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+       */
+      public int getMethodTypeValue() {
+        return methodType_;
+      }
+      /**
+       * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+       */
+      public Builder setMethodTypeValue(int value) {
+        methodType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+       */
+      public devicemodel.DeviceModelProto.MessageBlock.MethodTypeType getMethodType() {
+        @SuppressWarnings("deprecation")
+        devicemodel.DeviceModelProto.MessageBlock.MethodTypeType result = devicemodel.DeviceModelProto.MessageBlock.MethodTypeType.valueOf(methodType_);
+        return result == null ? devicemodel.DeviceModelProto.MessageBlock.MethodTypeType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+       */
+      public Builder setMethodType(devicemodel.DeviceModelProto.MessageBlock.MethodTypeType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        methodType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.devicemodel.MessageBlock.MethodTypeType methodType = 3;</code>
+       */
+      public Builder clearMethodType() {
+        
+        methodType_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object toServiceName_ = "";
       /**
-       * <code>string toServiceName = 3;</code>
+       * <code>string toServiceName = 4;</code>
        */
       public java.lang.String getToServiceName() {
         java.lang.Object ref = toServiceName_;
@@ -2734,7 +2603,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string toServiceName = 3;</code>
+       * <code>string toServiceName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getToServiceNameBytes() {
@@ -2750,7 +2619,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string toServiceName = 3;</code>
+       * <code>string toServiceName = 4;</code>
        */
       public Builder setToServiceName(
           java.lang.String value) {
@@ -2763,7 +2632,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string toServiceName = 3;</code>
+       * <code>string toServiceName = 4;</code>
        */
       public Builder clearToServiceName() {
         
@@ -2772,7 +2641,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string toServiceName = 3;</code>
+       * <code>string toServiceName = 4;</code>
        */
       public Builder setToServiceNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2788,7 +2657,7 @@ public final class DeviceModelProto {
 
       private java.lang.Object fromServiceName_ = "";
       /**
-       * <code>string fromServiceName = 4;</code>
+       * <code>string fromServiceName = 5;</code>
        */
       public java.lang.String getFromServiceName() {
         java.lang.Object ref = fromServiceName_;
@@ -2803,7 +2672,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string fromServiceName = 4;</code>
+       * <code>string fromServiceName = 5;</code>
        */
       public com.google.protobuf.ByteString
           getFromServiceNameBytes() {
@@ -2819,7 +2688,7 @@ public final class DeviceModelProto {
         }
       }
       /**
-       * <code>string fromServiceName = 4;</code>
+       * <code>string fromServiceName = 5;</code>
        */
       public Builder setFromServiceName(
           java.lang.String value) {
@@ -2832,7 +2701,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string fromServiceName = 4;</code>
+       * <code>string fromServiceName = 5;</code>
        */
       public Builder clearFromServiceName() {
         
@@ -2841,7 +2710,7 @@ public final class DeviceModelProto {
         return this;
       }
       /**
-       * <code>string fromServiceName = 4;</code>
+       * <code>string fromServiceName = 5;</code>
        */
       public Builder setFromServiceNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2851,51 +2720,6 @@ public final class DeviceModelProto {
   checkByteStringIsUtf8(value);
         
         fromServiceName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int methodType_ = 0;
-      /**
-       * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-       */
-      public int getMethodTypeValue() {
-        return methodType_;
-      }
-      /**
-       * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-       */
-      public Builder setMethodTypeValue(int value) {
-        methodType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-       */
-      public devicemodel.DeviceModelProto.Message.MethodTypeType getMethodType() {
-        @SuppressWarnings("deprecation")
-        devicemodel.DeviceModelProto.Message.MethodTypeType result = devicemodel.DeviceModelProto.Message.MethodTypeType.valueOf(methodType_);
-        return result == null ? devicemodel.DeviceModelProto.Message.MethodTypeType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-       */
-      public Builder setMethodType(devicemodel.DeviceModelProto.Message.MethodTypeType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        methodType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.devicemodel.Message.MethodTypeType methodType = 5;</code>
-       */
-      public Builder clearMethodType() {
-        
-        methodType_ = 0;
         onChanged();
         return this;
       }
@@ -3098,41 +2922,41 @@ public final class DeviceModelProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:devicemodel.Message)
+      // @@protoc_insertion_point(builder_scope:devicemodel.MessageBlock)
     }
 
-    // @@protoc_insertion_point(class_scope:devicemodel.Message)
-    private static final devicemodel.DeviceModelProto.Message DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:devicemodel.MessageBlock)
+    private static final devicemodel.DeviceModelProto.MessageBlock DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new devicemodel.DeviceModelProto.Message();
+      DEFAULT_INSTANCE = new devicemodel.DeviceModelProto.MessageBlock();
     }
 
-    public static devicemodel.DeviceModelProto.Message getDefaultInstance() {
+    public static devicemodel.DeviceModelProto.MessageBlock getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Message>
-        PARSER = new com.google.protobuf.AbstractParser<Message>() {
+    private static final com.google.protobuf.Parser<MessageBlock>
+        PARSER = new com.google.protobuf.AbstractParser<MessageBlock>() {
       @java.lang.Override
-      public Message parsePartialFrom(
+      public MessageBlock parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Message(input, extensionRegistry);
+        return new MessageBlock(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Message> parser() {
+    public static com.google.protobuf.Parser<MessageBlock> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Message> getParserForType() {
+    public com.google.protobuf.Parser<MessageBlock> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public devicemodel.DeviceModelProto.Message getDefaultInstanceForType() {
+    public devicemodel.DeviceModelProto.MessageBlock getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3149,10 +2973,10 @@ public final class DeviceModelProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_devicemodel_DeviceNode_AttributesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_devicemodel_Message_descriptor;
+    internal_static_devicemodel_MessageBlock_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_devicemodel_Message_fieldAccessorTable;
+      internal_static_devicemodel_MessageBlock_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3162,23 +2986,23 @@ public final class DeviceModelProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021DeviceModel.proto\022\013devicemodel\"\361\001\n\nDev" +
-      "iceNode\022+\n\nnodeParent\030\001 \001(\0132\027.devicemode" +
-      "l.DeviceNode\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\003 \001(" +
-      "\t\022)\n\010children\030\004 \003(\0132\027.devicemodel.Device" +
-      "Node\022;\n\nattributes\030\005 \003(\0132\'.devicemodel.D" +
-      "eviceNode.AttributesEntry\0321\n\017AttributesE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\343\002\n" +
-      "\007Message\022\021\n\tmessageId\030\001 \001(\t\0229\n\013messageTy" +
-      "pe\030\002 \001(\0162$.devicemodel.Message.MessageTy" +
-      "peType\022\025\n\rtoServiceName\030\003 \001(\t\022\027\n\017fromSer" +
-      "viceName\030\004 \001(\t\0227\n\nmethodType\030\005 \001(\0162#.dev" +
-      "icemodel.Message.MethodTypeType\022\014\n\004path\030" +
-      "\006 \001(\t\022%\n\004body\030\007 \001(\0132\027.devicemodel.Device" +
-      "Node\">\n\017MessageTypeType\022\014\n\010REGISTER\020\000\022\t\n" +
-      "\005IPROC\020\001\022\007\n\003WEB\020\002\022\t\n\005REPLY\020\003\",\n\016MethodTy" +
-      "peType\022\007\n\003GET\020\000\022\007\n\003PUT\020\001\022\010\n\004POST\020\002B\037\n\013de" +
-      "vicemodelB\020DeviceModelProtob\006proto3"
+      "\n\021DeviceModel.proto\022\013devicemodel\"\304\001\n\nDev" +
+      "iceNode\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022)\n\010" +
+      "children\030\003 \003(\0132\027.devicemodel.DeviceNode\022" +
+      ";\n\nattributes\030\004 \003(\0132\'.devicemodel.Device" +
+      "Node.AttributesEntry\0321\n\017AttributesEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\215\003\n\014Mess" +
+      "ageBlock\022\021\n\tmessageId\030\001 \001(\t\022>\n\013messageTy" +
+      "pe\030\002 \001(\0162).devicemodel.MessageBlock.Mess" +
+      "ageTypeType\022<\n\nmethodType\030\003 \001(\0162(.device" +
+      "model.MessageBlock.MethodTypeType\022\025\n\rtoS" +
+      "erviceName\030\004 \001(\t\022\027\n\017fromServiceName\030\005 \001(" +
+      "\t\022\014\n\004path\030\006 \001(\t\022%\n\004body\030\007 \001(\0132\027.devicemo" +
+      "del.DeviceNode\"Y\n\017MessageTypeType\022\014\n\010REG" +
+      "ISTER\020\000\022\r\n\tHEARTBEAT\020\001\022\t\n\005IPROC\020\002\022\007\n\003WEB" +
+      "\020\003\022\t\n\005REPLY\020\004\022\n\n\006STREAM\020\005\",\n\016MethodTypeT" +
+      "ype\022\007\n\003GET\020\000\022\007\n\003PUT\020\001\022\010\n\004POST\020\002B\037\n\013devic" +
+      "emodelB\020DeviceModelProtob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3197,19 +3021,19 @@ public final class DeviceModelProto {
     internal_static_devicemodel_DeviceNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_devicemodel_DeviceNode_descriptor,
-        new java.lang.String[] { "NodeParent", "Name", "Value", "Children", "Attributes", });
+        new java.lang.String[] { "Name", "Value", "Children", "Attributes", });
     internal_static_devicemodel_DeviceNode_AttributesEntry_descriptor =
       internal_static_devicemodel_DeviceNode_descriptor.getNestedTypes().get(0);
     internal_static_devicemodel_DeviceNode_AttributesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_devicemodel_DeviceNode_AttributesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_devicemodel_Message_descriptor =
+    internal_static_devicemodel_MessageBlock_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_devicemodel_Message_fieldAccessorTable = new
+    internal_static_devicemodel_MessageBlock_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_devicemodel_Message_descriptor,
-        new java.lang.String[] { "MessageId", "MessageType", "ToServiceName", "FromServiceName", "MethodType", "Path", "Body", });
+        internal_static_devicemodel_MessageBlock_descriptor,
+        new java.lang.String[] { "MessageId", "MessageType", "MethodType", "ToServiceName", "FromServiceName", "Path", "Body", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

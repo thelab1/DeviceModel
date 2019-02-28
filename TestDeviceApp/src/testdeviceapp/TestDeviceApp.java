@@ -2,6 +2,7 @@ package testdeviceapp;
 
 import devicebase.DeviceBase;
 import devicemodel.DeviceNode;
+import devicemodel.NodeManager;
 import java.util.Map;
 
 /**
@@ -20,6 +21,8 @@ public class TestDeviceApp extends DeviceBase {
         for (String key : args.keySet()) {
             System.out.println("\t"+key+": "+args.get(key));
         }
+
+        System.out.println("Here's the Tree:\n"+NodeManager.getRootNode().getString());
     }
 
     /**

@@ -146,13 +146,8 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
     }
 
     public DeviceModelProto.DeviceNode.Builder getDeviceNodeProtoBuf() {
-        return this.getDeviceNodeProtoBuf(null);
-    }
-
-    public DeviceModelProto.DeviceNode.Builder getDeviceNodeProtoBuf(DeviceModelProto.DeviceNode.Builder nodeParent) {
         DeviceModelProto.DeviceNode.Builder devNodeBuilder = DeviceModelProto.DeviceNode.newBuilder();
 
-        if (nodeParent != null) devNodeBuilder.setNodeParent(nodeParent);
         devNodeBuilder.setName(this.getName());
         devNodeBuilder.setValue(this.getValue());
         for (String key : this.attributes.keySet()) {
@@ -193,16 +188,17 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
 
         return -1;
     }
-    public void addChild(DeviceNode child) {
-        this.addChild(child, false);
+
+    public DeviceNode addChild(DeviceNode child) {
+        return this.addChild(child, false);
     }
 
-    public void addChild(DeviceNode child, boolean fireUpdate) {
+    public DeviceNode addChild(DeviceNode child, boolean fireUpdate) {
         if (fireUpdate) {
             // Copy this node, add the child
             // and then update this node.
             DeviceNode wrapper = this.cloneShallow();
-            child.setParent(wrapper);
+            wrapper.addChild(child);
             this.update(wrapper);
         }
         else {
@@ -214,6 +210,16 @@ public class DeviceNode implements PropertyChangeListener, Comparable<DeviceNode
                 this.children.add(child);
             }
         }
+
+        return child;
+    }
+
+    public DeviceNode addChildren(DeviceNode[] childs) {
+        for (DeviceNode child : childs) {
+            this.addChild(child);
+        }
+
+        return this;
     }
 
     // read-only; adding should go through addChild()

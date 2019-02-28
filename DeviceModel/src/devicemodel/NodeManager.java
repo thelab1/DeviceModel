@@ -34,6 +34,10 @@ public class NodeManager {
         return _instance;
     }
 
+    public static DeviceNode getRootNode() {
+        return getInstance().rootNode;
+    }
+
     public static DeviceNode getChildByPath(String path) {
         try {
             return getInstance().rootNode.getChildByPath(path);

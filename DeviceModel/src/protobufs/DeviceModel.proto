@@ -6,19 +6,20 @@ option java_package = "devicemodel";
 option java_outer_classname = "DeviceModelProto";
 
 message DeviceNode {
-    DeviceNode nodeParent = 1;
-    string name = 2;
-    string value = 3;
-    repeated DeviceNode children = 4;
-    map<string, string> attributes = 5;
+    string name = 1;
+    string value = 2;
+    repeated DeviceNode children = 3;
+    map<string, string> attributes = 4;
 }
 
-message Message {
+message MessageBlock {
     enum MessageTypeType {
         REGISTER = 0;
-        IPROC = 1;
-        WEB = 2;
-        REPLY = 3;
+        HEARTBEAT = 1;
+        IPROC = 2;
+        WEB = 3;
+        REPLY = 4;
+        STREAM = 5;
     }
 
     enum MethodTypeType {
@@ -29,9 +30,9 @@ message Message {
 
     string messageId = 1;
     MessageTypeType messageType = 2;
-    string toServiceName = 3;
-    string fromServiceName = 4;
-    MethodTypeType methodType = 5;
+    MethodTypeType methodType = 3;
+    string toServiceName = 4;
+    string fromServiceName = 5;
     string path = 6;
     DeviceNode body = 7;
 }
