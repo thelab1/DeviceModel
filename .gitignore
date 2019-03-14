@@ -18,3 +18,8 @@ native
 octave-core
 private
 node_modules
+/DeviceService/target/
+/SimpleDemo/target/
+/DeviceModel/target/
+/DeviceModel/src/main/java/rrb/infra/devicemodel/DeviceModelProto.proto
+/RapidSocket/target/
