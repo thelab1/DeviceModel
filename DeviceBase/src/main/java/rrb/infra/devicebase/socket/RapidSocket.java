@@ -1,7 +1,7 @@
-package devicebase.socket;
+package rrb.infra.devicebase.socket;
 
-import static devicemodel.DeviceModelProto.MessageBlock;
-import devicemodel.DeviceNode;
+import static rrb.infra.devicemodel.DeviceModelProto.MessageBlock;
+import rrb.infra.devicemodel.DeviceNode;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

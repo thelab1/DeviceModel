@@ -1,4 +1,4 @@
-package devicebase;
+package rrb.infra.devicebase;
 
 import java.util.HashMap;
 import java.util.Map;

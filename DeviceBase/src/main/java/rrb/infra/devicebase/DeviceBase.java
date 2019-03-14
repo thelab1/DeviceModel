@@ -1,20 +1,22 @@
-package devicebase;
+package rrb.infra.devicebase;
 
-import devicebase.OptionsParser.BaseOptionType;
-import devicebase.socket.RapidSocket;
-import devicemodel.DeviceNode;
-import devicemodel.NodeManager;
-import devicemodel.conversions.XmlConversions;
+import rrb.infra.devicebase.OptionsParser.BaseOptionType;
+import rrb.infra.devicebase.socket.RapidSocket;
+import rrb.infra.devicemodel.DeviceNode;
+import rrb.infra.devicemodel.NodeManager;
+import rrb.infra.devicemodel.conversions.XmlConversions;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import org.jdom2.JDOMException;
+import rrb.infra.devicemodel.DeviceModelProto.MessageBlock;
+import rrb.infra.rapidsocket.RapidClientHandler;
 
 /**
  *
  * @author Pobzeb
  */
-public abstract class DeviceBase {
+public abstract class DeviceBase implements RapidClientHandler {
     public final RapidSocket rapidSocket;
 
     public DeviceBase(String[] args) {
@@ -96,6 +98,26 @@ public abstract class DeviceBase {
 
         // Start the application.
         this.startApplication(options, systemConfig);
+    }
+
+    @Override
+    public void onOpen() {
+        
+    }
+
+    @Override
+    public void onClose() {
+        
+    }
+
+    @Override
+    public void onError(Exception ex) {
+        
+    }
+
+    @Override
+    public boolean onMessage(MessageBlock msg) {
+        return false;
     }
 
     public abstract void startApplication(Map<String, String> args, DeviceNode systemConfig);
