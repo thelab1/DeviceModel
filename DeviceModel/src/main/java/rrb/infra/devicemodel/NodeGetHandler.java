@@ -1,4 +1,4 @@
-package devicemodel;
+package rrb.infra.devicemodel;
 
 import java.util.HashMap;
 

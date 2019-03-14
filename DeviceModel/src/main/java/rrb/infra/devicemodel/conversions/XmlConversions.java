@@ -1,6 +1,6 @@
-package devicemodel.conversions;
+package rrb.infra.devicemodel.conversions;
 
-import devicemodel.DeviceNode;
+import rrb.infra.devicemodel.DeviceNode;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
