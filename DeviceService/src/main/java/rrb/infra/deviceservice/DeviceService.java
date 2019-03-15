@@ -10,8 +10,8 @@ import static spark.Spark.webSocket;
  */
 public class DeviceService {
     public DeviceService() {
-        // This service runs on port 83.
-        port(83);
+        // This service runs on port 8083.
+        port(8083);
 
         // Create the WebSocket endpoint.
         webSocket("/ws", SocketHandler.class);
@@ -26,5 +26,4 @@ public class DeviceService {
     public static void main(String[] args) {
         new DeviceService();
     }
-    
 }

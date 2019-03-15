@@ -13,9 +13,9 @@ import rrb.infra.devicemodel.DeviceModelProto.MessageBlock;
  */
 public class RapidClientSocket extends Thread {
     private final String clientName;
+    private final String hostname;
+    private final int port;
     private final RapidClientHandler clientHandler;
-    private String hostname;
-    private int port;
     private Socket clientSocket;
     private CodedInputStream in;
     private CodedOutputStream out;
@@ -123,7 +123,6 @@ public class RapidClientSocket extends Thread {
                                     break;
                                 }
                                 case IPROC:
-                                case WEB:
                                 case REPLY: {
                                     MessageBlock reply = this.doMessage(msg);
                                     if (reply != null) this.sendMessage(reply);

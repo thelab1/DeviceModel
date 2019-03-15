@@ -2,9 +2,10 @@ package rrb.infra.rapidsocket;
 
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -12,13 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import rrb.infra.devicemodel.DeviceModelProto.MessageBlock;
+import rrb.infra.devicemodel.DeviceNode;
 
 /**
  *
  * @author pobzeb
  */
-public class RapidServerSocket {
+public class RapidServerSocket implements PropertyChangeListener {
     public static final int DEFAULT_PORT = 8081;
+    public static final String FROM_DEVICE_SERVICE = "DeviceService";
     public static final long CLIENT_HEARTBEAT_WARNING = 2000;
     public static final long CLIENT_HEARTBEAT_TIMEOUT = 4000;
 
@@ -32,7 +35,7 @@ public class RapidServerSocket {
         ExecutorService pool = Executors.newFixedThreadPool(500);
         try (ServerSocket listener = new ServerSocket(port)) {
             while (true) {
-                pool.execute(new RapidClientHandler(listener.accept()));
+                pool.execute(new RapidClientHandler(listener.accept(), this));
             }
         }
     }
@@ -54,17 +57,49 @@ public class RapidServerSocket {
         return null;
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        // Get the message.
+        MessageBlock msg = (MessageBlock)evt.getNewValue();
+        switch(msg.getMessageType()) {
+            case IPROC:
+            case REPLY: {
+                // Find the service this message is for.
+                RapidClientHandler handler = this.clientHandlers.get(msg.getToServiceName());
+                if (handler != null) handler.sendMessage(msg);
+                else {
+                    // This client is no longer available. Send
+                    // a reply back to the from client.
+                    String fromService = msg.getFromServiceName();
+                    String toService = msg.getToServiceName();
+                    msg = msg.toBuilder().setToServiceName(fromService)
+                        .setFromServiceName(FROM_DEVICE_SERVICE)
+                        .setMessageType(MessageBlock.MessageTypeType.REPLY)
+                        .setBody((new DeviceNode("ERROR").addChildren(new DeviceNode[]{
+                            new DeviceNode("Code", "404"),
+                            new DeviceNode("Message", "Device "+toService+" is not available")
+                        })).getDeviceNodeProtoBuf()).build();
+                    this.clientHandlers.get(msg.getToServiceName()).sendMessage(msg);
+                }
+                break;
+            }
+        }
+    }
+
     private static class RapidClientHandler implements Runnable {
         private final Socket client;
         private String clientName;
         private CodedInputStream in;
         private CodedOutputStream out;
+        private PropertyChangeSupport support;
         private long lastHB;
         private Thread hbThread;
         private boolean running = false;
 
-        public RapidClientHandler(Socket client) {
+        public RapidClientHandler(Socket client, PropertyChangeListener listener) {
             this.client = client;
+            this.support = new PropertyChangeSupport(this);
+            this.support.addPropertyChangeListener(listener);
         }
 
         public void sendMessage(MessageBlock msg) {
@@ -158,8 +193,8 @@ public class RapidServerSocket {
                                     break;
                                 }
                                 case IPROC:
-                                case WEB:
                                 case REPLY: {
+                                    this.support.firePropertyChange(this.clientName, null, msg);
                                     break;
                                 }
                                 case STREAM: {
@@ -185,6 +220,9 @@ public class RapidServerSocket {
                     clientHandlers.remove(this.clientName);
                 }
                 try { this.client.close(); } catch (IOException ex) {}
+                for (PropertyChangeListener listener : this.support.getPropertyChangeListeners()) {
+                    this.support.removePropertyChangeListener(listener);
+                }
             }
         }
     }
