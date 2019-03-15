@@ -24,3 +24,4 @@ node_modules
 /DeviceModel/src/main/java/rrb/infra/devicemodel/DeviceModelProto.java
 /RapidSocket/target/
 /DeviceBase/target/
+/TestDeviceApp/target/

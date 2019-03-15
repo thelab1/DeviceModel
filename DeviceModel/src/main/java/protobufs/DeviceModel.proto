@@ -17,9 +17,8 @@ message MessageBlock {
         REGISTER = 0;
         HEARTBEAT = 1;
         IPROC = 2;
-        WEB = 3;
-        REPLY = 4;
-        STREAM = 5;
+        REPLY = 3;
+        STREAM = 4;
     }
 
     enum MethodTypeType {
