@@ -1,8 +1,8 @@
-package testdeviceapp;
+package rrb.infra.testdeviceapp;
 
-import devicebase.DeviceBase;
-import devicemodel.DeviceNode;
-import devicemodel.NodeManager;
+import rrb.infra.devicebase.DeviceBase;
+import rrb.infra.devicemodel.DeviceNode;
+import rrb.infra.devicemodel.NodeManager;
 import java.util.Map;
 
 /**
