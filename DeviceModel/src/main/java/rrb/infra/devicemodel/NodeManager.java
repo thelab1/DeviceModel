@@ -38,6 +38,18 @@ public class NodeManager {
         return getInstance().rootNode;
     }
 
+    public static DeviceNode toDeviceNode(DeviceModelProto.DeviceNode node) {
+        DeviceNode ret = new DeviceNode(node.getName());
+        if (node.getValue() != null && node.getValue().trim().length() > 0) ret.setValue(node.getValue());
+        for (String key : node.getAttributesMap().keySet()) {
+            ret.addAttribute(key, node.getAttributesMap().get(key));
+        }
+        for (DeviceModelProto.DeviceNode child : node.getChildrenList()) {
+            ret.addChild(toDeviceNode(child));
+        }
+        return ret;
+    }
+
     public static DeviceNode getChildByPath(String path) {
         try {
             return getInstance().rootNode.getChildByPath(path);
